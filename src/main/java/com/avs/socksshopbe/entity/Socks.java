@@ -12,6 +12,7 @@ public class Socks {
     public Socks(String color, Byte cottonPart) {
         this.color = color;
         this.cottonPart = cottonPart;
+        this.quantity = 0;
     }
 
     @Id
