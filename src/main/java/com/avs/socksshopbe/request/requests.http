@@ -9,6 +9,16 @@ Content-Type: application/json
 }
 
 ###
+POST https://socks-shop.herokuapp.com/api/socks/income
+Content-Type: application/json
+
+{
+  "color": "green",
+  "cottonPart": "90",
+  "quantity":  100
+}
+
+###
 POST http://localhost:8080/api/socks/outcome
 Content-Type: application/json
 
@@ -19,4 +29,17 @@ Content-Type: application/json
 }
 
 ###
+POST https://socks-shop.herokuapp.com/api/socks/outcome
+Content-Type: application/json
+
+{
+  "color": "green",
+  "cottonPart": "90",
+  "quantity":  5
+}
+
+###
 GET http://localhost:8080/api/socks?color=green&operation=lessThan&cottonPart=95
+
+###
+GET https://socks-shop.herokuapp.com/api/socks?color=green&operation=lessThan&cottonPart=95
