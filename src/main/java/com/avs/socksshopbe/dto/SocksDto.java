@@ -1,10 +1,8 @@
 package com.avs.socksshopbe.dto;
 
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 
 @Data
 @AllArgsConstructor
@@ -18,6 +16,6 @@ public class SocksDto {
     @Max(100)
     private Byte cottonPart;
     @NotNull
-    @Min(1)
+    @Positive
     private Integer quantity;
 }

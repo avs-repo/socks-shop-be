@@ -1,11 +1,11 @@
 package com.avs.socksshopbe.entity;
 
+import jakarta.persistence.*;
 import lombok.*;
-
-import javax.persistence.*;
 
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @Entity
 public class Socks {

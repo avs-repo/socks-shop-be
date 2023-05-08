@@ -10,21 +10,18 @@ import java.util.Optional;
 
 @Repository
 public interface SocksRepository extends JpaRepository<Socks, Long> {
-    Optional<Socks> findByColorAndCottonPart(String color, Byte cottonPart);
+    Optional<Socks> findByColorIgnoreCaseAndCottonPart(String color, Byte cottonPart);
 
     @Query(value = "SELECT SUM(quantity) AS sum FROM socks s " +
-            "WHERE (s.color = :sColor AND s.cotton_part > :cotton)",
-            nativeQuery = true)
+            "WHERE (LOWER(s.color) = LOWER(:sColor) AND s.cotton_part > :cotton)", nativeQuery = true)
     Integer sumByColorAndCottonPartMoreThan(@Param("sColor") String searchColor, @Param("cotton") Byte cottonPart);
 
     @Query(value = "SELECT SUM(quantity) AS sum FROM socks s " +
-            "WHERE (s.color = :sColor AND s.cotton_part < :cotton) ",
-            nativeQuery = true)
+            "WHERE (LOWER(s.color) = LOWER(:sColor) AND s.cotton_part < :cotton) ", nativeQuery = true)
     Integer sumByColorAndCottonPartLessThan(@Param("sColor") String searchColor, @Param("cotton") Byte cottonPart);
 
     @Query(value = "SELECT SUM(quantity) AS sum FROM socks s " +
-            "WHERE (s.color = :sColor AND s.cotton_part = :cotton)",
-            nativeQuery = true)
+            "WHERE (LOWER(s.color) = LOWER(:sColor) AND s.cotton_part = :cotton)", nativeQuery = true)
     Integer sumByColorAndCottonPartEquals(@Param("sColor") String searchColor, @Param("cotton") Byte cottonPart);
 
 }

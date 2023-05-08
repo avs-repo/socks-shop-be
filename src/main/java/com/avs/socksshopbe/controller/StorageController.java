@@ -11,9 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PositiveOrZero;
-
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -34,7 +31,7 @@ public class StorageController {
     )
     @PostMapping("/income")
     public SocksDto incomeSocks(@RequestBody @Validated SocksDto socksDto) {
-        log.info("Добавление носков {} на склад", socksDto);
+        log.info("Запрос добавления носков {} на склад", socksDto);
         return storageService.incomeSocks(socksDto);
     }
 
@@ -51,7 +48,7 @@ public class StorageController {
     )
     @PostMapping("/outcome")
     public SocksDto outcomeSocks(@RequestBody @Validated SocksDto socksDto) {
-        log.info("Забор носков {} со склада", socksDto);
+        log.info("Запрос забор носков {} со склада", socksDto);
         return storageService.outcomeSocks(socksDto);
     }
 
@@ -69,7 +66,7 @@ public class StorageController {
     @GetMapping
     public Integer getSocksByParams(@RequestParam String color,
                                     @RequestParam(defaultValue = "equal") Operations operation,
-                                    @PositiveOrZero @NotNull Byte cottonPart) {
+                                    @Validated Byte cottonPart) {
         log.info("Запрос количества носков цвета {} с содержанием хлопка {} {}.", color, operation, cottonPart);
         return storageService.getSocksByParams(color, operation, cottonPart);
     }
