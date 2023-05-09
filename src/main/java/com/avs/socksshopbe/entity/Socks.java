@@ -15,6 +15,12 @@ public class Socks {
         this.quantity = 0;
     }
 
+    public Socks(String color, Byte cottonPart, Integer quantity) {
+        this.color = color;
+        this.cottonPart = cottonPart;
+        this.quantity = quantity;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
